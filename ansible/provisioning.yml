@@ -1,0 +1,9 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+      - apt: pkg=htop state=installed
+      - apt: pkg=nginx state=installed
+      - apt: pkg=zsh state=installed
+      - apt: pkg=mysql-server state=installed
+
