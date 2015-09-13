@@ -5,5 +5,6 @@
     - apt: pkg=nginx state=installed
     - apt: pkg=mysql-server state=installed
     - apt: pkg=supervisor state=installed
+    - apt: pkg=redis-server state=installed
 
 

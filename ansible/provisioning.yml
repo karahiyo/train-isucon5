@@ -6,9 +6,17 @@
       apt: pkg={{ item }} state=installed
       with_items:
         - aptitude
+        - pkg-config
+        - build-essential
+        - libxml2-dev
+        - libmysqld-dev
+        - libssl-dev
+        - libreadline-dev
+        - curl
         - vim
         - supervisor
         - git
         - zsh
         - htop
         - tmux
+
