@@ -1,0 +1,8 @@
+---
+- hosts: all
+  sudo: yes
+  tasks:
+    - group: name=isucon state=present
+    - user: name=isucon groups=isucon
+    - lineinfile: dest=/etc/sudoers state=present regexp='^isucon ALL\=' line='isucon ALL=NOPASSWD:ALL' validate='visudo -cf %s'
+

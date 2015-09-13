@@ -12,6 +12,15 @@
         - libmysqld-dev
         - libssl-dev
         - libreadline-dev
+        - autoconf
+        - bison
+        - libyaml-dev
+        - libreadline6-dev
+        - zlib1g-dev
+        - libncurses5-dev
+        - libffi-dev
+        - libgdbm3
+        - libgdbm-dev
         - curl
         - vim
         - supervisor

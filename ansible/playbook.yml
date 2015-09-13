@@ -1,4 +1,5 @@
 - include: tz.yml
 - include: provisioning.yml
-- include: app.yml
+- include: user.yml
 - include: isucon4.yml
+- include: app.yml

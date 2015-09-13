@@ -2,28 +2,20 @@
 - hosts: all
   sudo: yes
   tasks:
-    - group: name=wheel state=present
-    - user: name=isucon groups=wheel
-    - lineinfile: dest=/etc/sudoers state=present regexp='^%wheel ALL\=' line='%wheel ALL=(ALL) NOPASSWD:ALL' validate='visudo -cf %s'
     - name: install ruby-build
-      shell: "{{ item }}"
-      register: exit
-      failed_when: exit.rc not in [0, 1]
-      with_items:
-          - git clone https://github.com/sstephenson/ruby-build.git /usr/local/ruby-build
-          - cd /usr/local/ruby-build && ./install.sh
+      shell: |
+          if ! which ruby-build; then
+            git clone https://github.com/sstephenson/ruby-build.git /usr/local/ruby-build
+            cd /usr/local/ruby-build && ./install.sh
+          fi
     - name: install ruby for isucon user
       shell: "{{ item }}"
-      sudo_user: isucon
       with_items:
           - test -e /home/isucon/.local || mkdir -p /home/isucon/.local
-          - chown -R isucon /home/isucon/.local
           - /usr/local/bin/ruby-build 2.1.3 /home/isucon/.local/ruby
+          - chown -R isucon /home/isucon/.local
     - name: setup for isucon4 ruby app
       shell: "{{ item }}"
-      register: exit
-      failed_when: exit.rc not in [0, 1]
-      sudo_user: isucon
       with_items:
           - git clone https://github.com/isucon/isucon4 /home/isucon/isucon4
           - cp -r /home/isucon/isucon4/qualifier/* /home/isucon/
@@ -35,9 +27,6 @@
           - cd /home/isucon/webapp/ruby && /home/isucon/env.sh bundle install
     - name: setup isucon4 benchmarker
       shell: "{{ item }}"
-      register: exit
-      failed_when: exit.rc not in [0, 1]
-      sudo_user: isucon
       with_items:
           - /home/isucon/env.sh gem install --no-document gondler -v 0.2.0
           -
@@ -48,6 +37,7 @@
           - head -n 26 /home/isucon/ami/files/supervisord.conf > /etc/supervisor/supervisord.conf
           - sed -i -e 's/wheel/root/' /etc/supervisor/supervisord.conf
   pre_tasks:
+    - apt: pkg=golang state=installed
     - apt: pkg=mysql-server state=installed
     - apt: pkg=nginx state=installed
     - apt: pkg=supervisor state=installed
