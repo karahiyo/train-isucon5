@@ -12,6 +12,6 @@ $ gcloud compute ssh train-isucon5
 ## provisioning
 
 ```
-$ make provisioning hosts=$(hosts)
+$ make provisioning hosts=<hosts> authorized_key=<path/to/ssh/key>
 ```
 

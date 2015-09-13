@@ -1,2 +1,3 @@
 - include: tz.yml
 - include: provisioning.yml
+- include: app.yml
