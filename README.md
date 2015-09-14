@@ -1,6 +1,12 @@
 train-isucon5
 ========================
 
+## for first use
+```
+$ gcloud config set project ...
+$ gcloud config set compute/zone asia-east1-c
+```
+
 ## create gce instance
 
 ```
