@@ -18,6 +18,7 @@
       shell: "{{ item }}"
       with_items:
           - test -e /home/isucon/isucon4 || git clone https://github.com/isucon/isucon4 /home/isucon/isucon4
+          - cp /home/isucon/isucon4/qualifier/ami/files/golang.sh /etc/profile.d/golang.sh
           - cp -r /home/isucon/isucon4/qualifier/* /home/isucon/
           - cp /home/isucon/ami/files/env.sh /home/isucon/
           - cp /home/isucon/ami/files/nginx.conf /etc/nginx/
@@ -36,6 +37,13 @@
 
           - head -n 26 /home/isucon/ami/files/supervisord.conf > /etc/supervisor/supervisord.conf
           - sed -i -e 's/wheel/root/' /etc/supervisor/supervisord.conf
+    - command: "/home/isucon/env.sh gem install --no-rdoc --no-ri gondler -v 0.2.0"
+      args:
+        creates: /usr/local/bin/gondler
+    - command: /home/isucon/env.sh ./build.sh
+      args:
+        chdir: /home/isucon/webapp/go
+    - command: chown -R isucon:isucon /home/isucon/gocode
   pre_tasks:
     - apt: pkg=golang state=installed
     - apt: pkg=mysql-server state=installed
