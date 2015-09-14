@@ -19,12 +19,7 @@
       with_items:
           - test -e /home/isucon/isucon4 || git clone https://github.com/isucon/isucon4 /home/isucon/isucon4
           - cp /home/isucon/isucon4/qualifier/ami/files/golang.sh /etc/profile.d/golang.sh
-          - cp -r /home/isucon/isucon4/qualifier/ami /home/isucon/
-          - cp -r /home/isucon/isucon4/qualifier/gcp /home/isucon/
-          - cp -r /home/isucon/isucon4/qualifier/init.sh /home/isucon/
-          - cp -r /home/isucon/isucon4/qualifier/README.md /home/isucon/
-          - cp -r /home/isucon/isucon4/qualifier/sql /home/isucon/
-          - cp -r /home/isucon/isucon4/qualifier/webapp /home/isucon/
+          - cd /home/isucon/isucon4/qualifier && cp -r ami gcp init.sh README.md sql webapp /home/isucon/
           - cp /home/isucon/ami/files/env.sh /home/isucon/
           - cp /home/isucon/ami/files/nginx.conf /etc/nginx/
           - cp /home/isucon/ami/files/my.cnf /etc/
