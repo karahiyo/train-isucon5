@@ -1,5 +1,6 @@
 - include: tz.yml
 - include: provisioning.yml
 - include: user.yml
+- include: golang.yml
 - include: isucon4.yml
 - include: app.yml
