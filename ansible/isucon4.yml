@@ -42,6 +42,11 @@
     - apt: pkg=nginx state=installed
     - apt: pkg=supervisor state=installed
     - apt: pkg=irqbalance state=installed
+    - apt: pkg=mysql-server state=present
+    - apt: pkg=mysql-client state=present
+    - apt: pkg=python-pip state=present
+    - apt: pkg=python-dev state=present
+    - apt: pkg=python-mysqldb state=present
   post_tasks:
     - command: ./init.sh
       sudo_user: isucon
