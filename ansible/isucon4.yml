@@ -17,7 +17,7 @@
     - name: setup for isucon4 ruby app
       shell: "{{ item }}"
       with_items:
-          - git clone https://github.com/isucon/isucon4 /home/isucon/isucon4
+          - test -e /home/isucon/isucon4 || git clone https://github.com/isucon/isucon4 /home/isucon/isucon4
           - cp -r /home/isucon/isucon4/qualifier/* /home/isucon/
           - cp /home/isucon/ami/files/env.sh /home/isucon/
           - cp /home/isucon/ami/files/nginx.conf /etc/nginx/
