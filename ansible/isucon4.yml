@@ -31,9 +31,9 @@
       with_items:
           - /home/isucon/env.sh gem install --no-document gondler -v 0.2.0
 
-          - cd /home/isucon/benchmarker && /home/isucon/env.sh make debug GIT_COMMIT=1402de0
-          - cp -r /home/isucon/benchmarker /tmp/
-          - cp -r /tmp/benchmarker/benchmarker /home/isucon/
+          - cd /home/isucon/isucon4/qualifier/benchmarker && /home/isucon/env.sh make debug GIT_COMMIT=1402de0
+          - rm -rf /home/isucon/benchmarker
+          - cp /home/isucon/isucon4/qualifier/benchmarker/benchmarker /home/isucon/
 
           - head -n 26 /home/isucon/ami/files/supervisord.conf > /etc/supervisor/supervisord.conf
           - sed -i -e 's/wheel/root/' /etc/supervisor/supervisord.conf
