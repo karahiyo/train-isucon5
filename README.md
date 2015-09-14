@@ -7,12 +7,13 @@ $ gcloud config set project ...
 $ gcloud config set compute/zone asia-east1-c
 ```
 
-## create gce instance
+## gcloud command samples
 
 ```
 $ gcloud compute instances create train-isucon5 --machine-type n1-standard-2
 $ gcloud compute instances list
 $ gcloud compute ssh train-isucon5
+$ gcloud compute instances delete train-isucon5
 ```
 
 ## provisioning
