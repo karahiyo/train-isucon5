@@ -32,7 +32,7 @@
           - /home/isucon/env.sh gem install --no-document gondler -v 0.2.0
 
           - cd /home/isucon/isucon4/qualifier/benchmarker && /home/isucon/env.sh make debug GIT_COMMIT=1402de0
-          - test -e /home/isucon/benchmarker && rm -rf /home/isucon/benchmarker
+          - rm -rf /home/isucon/benchmarker
           - cp /home/isucon/isucon4/qualifier/benchmarker/benchmarker /home/isucon/
 
           - head -n 26 /home/isucon/ami/files/supervisord.conf > /etc/supervisor/supervisord.conf
