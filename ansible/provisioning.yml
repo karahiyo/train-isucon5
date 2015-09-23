@@ -3,7 +3,7 @@
   sudo: yes
   tasks:
     - name: install default packeges
-      apt: pkg={{ item }} state=installed
+      apt: pkg={{ item }} state=installed update_cache=yes
       with_items:
         - aptitude
         - pkg-config
